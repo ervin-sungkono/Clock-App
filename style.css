@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+    --black: #2b2b2b;
+    --white: #ffffff;
+    --blue: #446ef8;
+    --light-blue: #e1f8fe;
+    --bold: 700;
+    --semi-bold: 600;
+    --medium: 500;
+    --regular: 400;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.3s background-color ease-in-out;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: #f1f1f1;
+}
+
+body.dark-mode{
+    --white:#2b2b2b;
+    --black: #ffffff;
+    --blue: #6387fd;
+    background-color: #1e1e1e;
+}
+
+a{
+    text-decoration: none;
+    user-select: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.container{
+    padding: 0 6rem;
+}
+
+#navbar{
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+}
+
+#navbar .container{
+    padding-block: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#navbar .container .nav-menu{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+#navbar .container .nav-menu .nav-link{
+    position: relative;
+    font-size: 18px;
+    color: var(--black);
+    padding: 0.5rem 1rem;
+}
+
+#navbar .container .nav-menu .nav-link::before{
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    border-radius: 2px;
+    height: 4px;
+    background: var(--blue);
+    transition: 0.3s width ease-in-out;
+}
+
+#navbar .container .nav-menu .nav-link.active{
+    font-weight: var(--bold);
+    color: var(--blue);
+}
+
+#navbar .container .nav-menu .nav-link.active::before{
+    width: 100%;
+}
+
+#navbar .container .button-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--black);
+}
+
+#navbar .container .button-wrapper .toggle-btn{
+    position: relative;
+    cursor: pointer;
+    padding: 4px 8px;
+    width: 64px;
+    height: 32px;
+    background-color: var(--white);
+    box-shadow: 5px 12px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+}
+
+#navbar .container .button-wrapper .toggle-btn #toggle-btn-circle{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
+    background-color: var(--blue);
+    transform: translateX(0);
+    transition: 0.3s transform ease-in-out;
+}
+
+#navbar .container .button-wrapper .toggle-btn #toggle-btn-circle.active{
+    transform: translate(100%);
+}
+
+.main-section{
+    display: none;
+}
+
+.main-section.active{
+    display: block;
+}
+
+.main-section .container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-section .container .section-wrapper{
+    padding: 3rem 4rem;
+    border-radius: 12px;
+    background-color: var(--white);
+    box-shadow: 6px 16px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-section .container .section-wrapper .button-wrapper{
+    display: flex;
+    gap: 2rem;
+}
+
+.main-section .container .section-wrapper .button-wrapper .button{
+    min-width: 180px;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: var(--semi-bold);
+}
+
+.timer-section .container .section-wrapper .timer-title{
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timer-section .container .section-wrapper .timer-title > h1{
+    font-size: 2.5rem;  
+}
+
+.timer-section .container .section-wrapper .timer-title > p{
+    font-size: 1.25rem;
+}
+
+.timer-section .container .section-wrapper .timer-title input[type="number"]{
+    max-width: 48px;
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    background: var(--light-blue);
+    border: none;
+    outline: none;
+}
+
+.timer-section .container .section-wrapper .timer-title #error-message{
+    font-size: 1rem;
+    color: red;
+}
+
+.timer-section .container .section-wrapper .timer-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timer-section .container .section-wrapper .timer-container #timer{
+    font-size: 3rem;
+    font-weight: var(--semi-bold);
+    color: var(--black);
+}
+
+.timer-section .container .section-wrapper .timer-container #timer.running{
+    animation: glow 1s linear 4;
+}
+
+@keyframes glow{
+    50%{
+        color: red;
+        transform: scale(120%);
+    }
+}
+
+.timer-section .container .section-wrapper .timer-container .bar{
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: var(--light-blue);
+}
+
+.timer-section .container .section-wrapper .timer-container .bar #indicator-bar{
+    width: 100%;
+    height: 12px;
+    border-radius: 12px;
+    background: var(--blue);
+}
+
+.timer-section .container .section-wrapper .timer-container .bar #indicator-bar.running{
+    animation: shrink 10s linear forwards;
+}
+
+@keyframes shrink{
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
+}
+
+.timer-section .container .section-wrapper .button-wrapper #start-btn,
+.stopwatch-section .container .section-wrapper .button-wrapper #start-watch-btn{
+    background-color: var(--blue);
+    color: #ffffff;
+}
+
+.timer-section .container .section-wrapper .button-wrapper #pause-btn,
+.stopwatch-section .container .section-wrapper .button-wrapper #pause-watch-btn{
+    background-color: red;
+    color: #ffffff;
+}
+
+.timer-section .container .section-wrapper .button-wrapper #reset-btn,
+.stopwatch-section .container .section-wrapper .button-wrapper #reset-watch-btn{
+    color: var(--blue);
+}
+
+.stopwatch-section .container .section-wrapper #stopwatch{
+    min-width: 270px;
+    font-size: 3rem;
+    font-weight: var(--semi-bold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--black);
+}
+
+.stopwatch-section .container .section-wrapper #stopwatch span{
+    font-size: 1.5rem;
+    font-weight: var(--regular);
+    opacity: 0.7;
+}
+
+.clock-section .container .section-wrapper #clock{
+    position: relative;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background-color: var(--black);
+}
+
+.clock-section .container .section-wrapper #clock > *:not(span){
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    background-color: var(--white);
+}
+
+.clock-section .container .section-wrapper #clock #hour-pointer{
+    height: 30%;
+    border: 3px solid var(--white);
+}
+
+.clock-section .container .section-wrapper #clock #minute-pointer{
+    height: 40%;
+    border: 2px solid var(--white);
+}
+
+.clock-section .container .section-wrapper #clock #second-pointer{
+    height: 33%;
+    border: 1px solid red;
+    background-color: red;
+    z-index: 1;
+}
+
+.clock-section .container .section-wrapper #clock #dot{
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    background: var(--black);
+    border: 3px solid var(--white);
+    border-radius: 100px;
+    z-index: 2;
+}
+
+
+.clock-section .container .section-wrapper .indicator-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.clock-section .container .section-wrapper #time-indicator{
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.clock-section .container .section-wrapper #date-indicator{
+    font-size: 18px;
+    color: var(--black);
+    opacity: 0.7;
+}

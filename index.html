@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Clock</title>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-menu">
+                <a href="#" class="nav-link active" onclick="setActive('timer')">Timer</a>
+                <a href="#" class="nav-link" onclick="setActive('stopwatch')">Stopwatch</a>
+                <a href="#" class="nav-link" onclick="setActive('clock')">Clock</a>
+            </div>
+            <div class="button-wrapper">
+                <p>Dark Mode</p>
+                <div class="toggle-btn" onclick="toggleDarkMode()">
+                    <div id="toggle-btn-circle"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="main-section timer-section active">
+        <div class="container">
+            <div class="section-wrapper">
+                <div class="timer-title">
+                    <h1>This is a Timer.</h1>
+                    <p>Set the timer to notify in: 
+                        <span><input type="number" name="hours" id="hours" onchange="validateTime('hours', 999)" value="0"></span> Hours
+                        <span><input type="number" name="minutes" id="minutes" onchange="validateTime('minutes', 60)" value="0"></span> Minutes
+                        <span><input type="number" name="seconds" id="seconds" onchange="validateTime('seconds', 60)" value="0"></span> Seconds
+                    </p>
+                    <p id="error-message"></p>
+                </div>
+                <div class="timer-container">
+                    <div id="timer">
+                        00:00:00
+                    </div>
+                    <div class="bar">
+                        <div id="indicator-bar"></div>
+                    </div>
+                </div>
+                <div class="button-wrapper">
+                    <a href="#" class="button" id="start-btn" onclick="startTimer()">Start</a>
+                    <a href="#" class="button" id="pause-btn" onclick="pauseTimer()">Pause</a>
+                    <a href="#" class="button" id="reset-btn" onclick="resetTimer()">Reset</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-section stopwatch-section">
+        <div class="container">
+            <div class="section-wrapper">
+                <div id="stopwatch">
+                    00:00:00 <span>00</span>
+                </div>
+                <div class="button-wrapper">
+                    <a href="#" class="button" id="start-watch-btn" onclick="startStopwatch()">Start</a>
+                    <a href="#" class="button" id="pause-watch-btn" onclick="pauseStopwatch()">Pause</a>
+                    <a href="#" class="button" id="reset-watch-btn" onclick="resetStopwatch()">Reset</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-section clock-section">
+        <div class="container">
+            <div class="section-wrapper">
+                <div id="clock">
+                    <div id="hour-pointer"></div>
+                    <div id="minute-pointer"></div>
+                    <div id="second-pointer"></div>
+                    <div id="dot"></div>
+                </div>
+                <div class="indicator-wrapper">
+                    <div id="time-indicator">
+                        00:00 PM
+                    </div>
+                    <div id="date-indicator">
+                        7/25/2022
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
