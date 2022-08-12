@@ -67,7 +67,7 @@ pauseButton.style.display = 'none';
 let timerDisplay = _id('timer');
 let duration = 0;
 
-let alarmRingtone = new Audio('./Assets/alarm-ringtone.wav');
+let alarmRingtone = new Audio('./assets/alarm-ringtone.wav');
 alarmRingtone.volume = 0.5;
 
 updateTimer = () =>{
