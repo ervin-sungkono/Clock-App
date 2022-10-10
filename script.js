@@ -210,7 +210,7 @@ let hourPointer = _id('hour-pointer');
 let minutePointer = _id('minute-pointer');
 let secondPointer = _id('second-pointer');
 
-const dateArray = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const dateOptions = {weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'}
 
 animateHours = (hours) => {
     hourPointer.animate([
@@ -242,13 +242,13 @@ setClockAnimation = () => {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
 
-    hourPointer.style.transform = "rotate("+(hours*30)+"deg)";
-    minutePointer.style.transform = "rotate("+(minutes*6)+"deg)";
+    hourPointer.style.transform = "rotate("+(hours*30 + (30*minutes/60))+"deg)";
+    minutePointer.style.transform = "rotate("+(minutes*6 + (6*seconds/60))+"deg)";
     secondPointer.style.transform = "rotate("+(seconds*6)+"deg)";
 
     animateSeconds(seconds);
-    animateMinutes(minutes);
-    animateHours(hours);
+    animateMinutes(minutes + (seconds/60));
+    animateHours(hours + (minutes/60));
 }
 
 updateClock = () => {
@@ -261,8 +261,7 @@ updateClock = () => {
         (minutes < 10 ? "0" + minutes : minutes) + 
         session;
 
-    let dayIndex = date.getDay();
-    dateDisplay.innerHTML = "Today is " + dateArray[dayIndex];
+    dateDisplay.innerHTML = new Date().toLocaleDateString('en-GB', dateOptions);
 }
 
 setTimeout(()=>{

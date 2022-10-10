@@ -9,6 +9,12 @@
     --semi-bold: 600;
     --medium: 500;
     --regular: 400;
+    --large-heading: 48px;
+    --medium-heading: 32px;
+    --small-heading: 24px;
+    --large-body-text: 20px;
+    --body-text: 18px;
+    --caption: 16px;
 }
 
 *{
@@ -69,7 +75,8 @@ input[type=number] {
 
 #navbar .container .nav-menu .nav-link{
     position: relative;
-    font-size: 18px;
+    font-size: var(--body-text);
+    font-weight: var(--medium);
     color: var(--black);
     padding: 0.5rem 1rem;
 }
@@ -81,17 +88,17 @@ input[type=number] {
     left: 0;
     width: 0%;
     border-radius: 2px;
-    height: 4px;
+    height: 3px;
     background: var(--blue);
     transition: 0.3s width ease-in-out;
 }
 
 #navbar .container .nav-menu .nav-link.active{
-    font-weight: var(--bold);
     color: var(--blue);
 }
 
-#navbar .container .nav-menu .nav-link.active::before{
+#navbar .container .nav-menu .nav-link.active::before,
+#navbar .container .nav-menu .nav-link:hover::before{
     width: 100%;
 }
 
@@ -175,11 +182,11 @@ input[type=number] {
 }
 
 .timer-section .container .section-wrapper .timer-title > h1{
-    font-size: 2.5rem;  
+    font-size: var(--medium-heading);  
 }
 
 .timer-section .container .section-wrapper .timer-title > p{
-    font-size: 1.25rem;
+    font-size: var(--large-body-text);
 }
 
 .timer-section .container .section-wrapper .timer-title input[type="number"]{
@@ -187,14 +194,14 @@ input[type=number] {
     text-align: center;
     padding: 0.5rem 0.5rem;
     border-radius: 8px;
-    font-size: 1.25rem;
+    font-size: var(--large-body-text);
     background: var(--light-blue);
     border: none;
     outline: none;
 }
 
 .timer-section .container .section-wrapper .timer-title #error-message{
-    font-size: 1rem;
+    font-size: var(--caption);
     color: red;
 }
 
@@ -207,7 +214,7 @@ input[type=number] {
 }
 
 .timer-section .container .section-wrapper .timer-container #timer{
-    font-size: 3rem;
+    font-size: var(--large-heading);
     font-weight: var(--semi-bold);
     color: var(--black);
 }
@@ -269,7 +276,7 @@ input[type=number] {
 
 .stopwatch-section .container .section-wrapper #stopwatch{
     min-width: 270px;
-    font-size: 3rem;
+    font-size: var(--large-heading);
     font-weight: var(--semi-bold);
     display: flex;
     justify-content: space-between;
@@ -278,7 +285,7 @@ input[type=number] {
 }
 
 .stopwatch-section .container .section-wrapper #stopwatch span{
-    font-size: 1.5rem;
+    font-size: var(--large-body-text);
     font-weight: var(--regular);
     opacity: 0.7;
 }
@@ -336,12 +343,45 @@ input[type=number] {
 }
 
 .clock-section .container .section-wrapper #time-indicator{
-    font-size: 2rem;
+    font-size: var(--medium-heading);
+    font-weight: var(--semi-bold);
     color: var(--black);
 }
 
 .clock-section .container .section-wrapper #date-indicator{
-    font-size: 18px;
+    font-size: var(--body-text);
     color: var(--black);
     opacity: 0.7;
+}
+
+@media only screen and (max-width: 1280px){
+    :root{
+        --large-heading: 40px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    :root{
+        --large-heading: 36px;
+        --medium-heading: 28px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    :root{
+        --large-heading: 32px;
+        --medium-heading: 24px;
+        --large-body-text: 18px;
+        --body-text: 16px;
+        --caption: 14.4px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    :root{
+        --large-heading: 28px;
+        --medium-heading: 20px;
+        --body-text: 14.4px;
+        --caption: 12px;
+    }
 }
